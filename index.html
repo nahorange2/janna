@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday 🐾</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --pink:    #f7c5d0;
+      --rose:    #e8849a;
+      --cream:   #fff8f3;
+      --blush:   #fde8ee;
+      --text:    #5a3045;
+      --soft:    #c97a93;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--cream);
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── floating paws background ── */
+    .paws-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .paw {
+      position: absolute;
+      font-size: 1.4rem;
+      opacity: 0.12;
+      animation: floatPaw linear infinite;
+    }
+
+    @keyframes floatPaw {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.12; }
+      90%  { opacity: 0.12; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── hero ── */
+    .hero {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 60px 24px 40px;
+      text-align: center;
+    }
+
+    .badge {
+      background: var(--pink);
+      color: var(--soft);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      animation: fadeSlideDown .8s ease both;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      line-height: 1.15;
+      color: var(--rose);
+      animation: fadeSlideDown .9s .1s ease both;
+    }
+
+    h1 em { font-style: italic; color: var(--soft); }
+
+    .subtitle {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 420px;
+      line-height: 1.7;
+      opacity: .8;
+      animation: fadeSlideDown 1s .2s ease both;
+    }
+
+    /* ── main cat gif ── */
+    .cat-hero {
+      margin-top: 36px;
+      animation: fadeSlideDown 1s .3s ease both;
+      position: relative;
+    }
+    .cat-hero img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid var(--pink);
+      box-shadow: 0 8px 40px rgba(232,132,154,.25);
+    }
+    .cat-hero::after {
+      content: '🎂';
+      position: absolute;
+      bottom: -4px; right: -4px;
+      font-size: 2rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
+    }
+
+    /* ── message cards ── */
+    .cards {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 520px;
+      margin: 40px auto 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 28px 24px;
+      box-shadow: 0 4px 24px rgba(232,132,154,.12);
+      border: 1.5px solid var(--pink);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardIn .7s ease forwards;
+      text-align: center;
+    }
+
+    .card:nth-child(1) { animation-delay: .5s; }
+    .card:nth-child(2) { animation-delay: .7s; }
+    .card:nth-child(3) { animation-delay: .9s; }
+
+    .card-emoji { font-size: 2rem; margin-bottom: 10px; display: block; }
+
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: .97rem;
+      line-height: 1.75;
+      opacity: .85;
+    }
+
+    /* ── cat gif row ── */
+    .cat-row {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+      padding: 0 20px 40px;
+    }
+    .cat-row img {
+      width: 140px; height: 140px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 3px solid var(--pink);
+      box-shadow: 0 4px 16px rgba(232,132,154,.18);
+      transition: transform .25s ease;
+    }
+    .cat-row img:hover { transform: scale(1.07) rotate(-2deg); }
+
+    /* ── big romantic quote ── */
+    .quote-section {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px 32px 50px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .quote-section blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+      line-height: 1.7;
+      color: var(--soft);
+      position: relative;
+      padding: 0 20px;
+    }
+    .quote-section blockquote::before,
+    .quote-section blockquote::after {
+      content: '"';
+      font-size: 4rem;
+      color: var(--pink);
+      position: absolute;
+      line-height: 1;
+    }
+    .quote-section blockquote::before { top: -10px; right: -4px; }
+    .quote-section blockquote::after  { bottom: -30px; left: -4px; }
+
+    /* ── footer ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 30px 20px 50px;
+      font-size: .85rem;
+      opacity: .55;
+    }
+
+    /* ── confetti burst on load ── */
+    .confetti-wrap {
+      position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    }
+    .dot {
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      animation: burst 1.2s ease-out forwards;
+    }
+
+    @keyframes burst {
+      0%   { opacity: 1; transform: translate(0,0) scale(1); }
+      100% { opacity: 0; transform: var(--tx) scale(.4); }
+    }
+
+    /* ── keyframes ── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* hearts rain */
+    .heart {
+      position: fixed;
+      font-size: 1.2rem;
+      pointer-events: none;
+      animation: heartFall linear infinite;
+      z-index: 0;
+    }
+    @keyframes heartFall {
+      0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+      10%  { opacity: .5; }
+      90%  { opacity: .5; }
+      100% { transform: translateY(110vh) rotate(20deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- floating paws -->
+<div class="paws-bg" id="pawsBg"></div>
+
+<!-- confetti -->
+<div class="confetti-wrap" id="confetti"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">🐾 happy birthday 🐾</div>
+  <h1>كل عام <em>وأنتِ</em><br>بخير 🎂</h1>
+  <p class="subtitle">
+    <!-- ✏️ replace this line -->
+    اليوم يوم خاص جداً، لأنكِ أنتِ من جعلته خاصاً
+  </p>
+
+  <div class="cat-hero">
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="cute cat" />
+  </div>
+</section>
+
+<!-- CARDS -->
+<div class="cards">
+
+  <div class="card">
+    <span class="card-emoji">🌸</span>
+    <h2>أول شيء</h2>
+    <!-- ✏️ replace text below -->
+    <p>في كل يوم في الجامعة، تضيفين شيئاً لطيفاً للمكان بدون ما تدرين. ابتسامتك صادقة وهذا نادر والله.</p>
+  </div>
+
+  <div class="card">
+    <span class="card-emoji">🐱</span>
+    <h2>ثاني شيء</h2>
+    <!-- ✏️ replace text below -->
+    <p>مثل القطط تماماً، عندك طاقة تجذب الناس إليك بدون ما تحاولين. وهذا شيء مو كل واحد يملكه.</p>
+  </div>
+
+  <div class="card">
+    <span class="card-emoji">✨</span>
+    <h2>ثالث شيء</h2>
+    <!-- ✏️ replace text below -->
+    <p>أتمنى لكِ سنة مليانة أشياء تفرحك وناس تستاهلك. تستاهلين كل خير.</p>
+  </div>
+
+</div>
+
+<!-- cat gif row -->
+<div class="cat-row">
+  <img src="https://raw.githubusercontent.com/nahorange2/janna/main/j1.jpg" alt="photo" />
+  <img src="https://raw.githubusercontent.com/nahorange2/janna/main/j2.jpeg" alt="photo" />
+  <img src="https://raw.githubusercontent.com/nahorange2/janna/main/j3.jpeg" alt="photo" />
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote>
+    <!-- ✏️ replace with your own words -->
+    بعض الناس ما يحتاجون يقولون كلام كثير عشان تحس إنهم مختلفين. وأنتِ منهم.
+  </blockquote>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  🐾 made with a little bit of care, just for you 🐾
+</footer>
+
+<script>
+  // ── floating paws ──
+  const pawsBg = document.getElementById('pawsBg');
+  const pawEmojis = ['🐾','🐾','🐾','🌸','✨'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('span');
+    p.className = 'paw';
+    p.textContent = pawEmojis[i % pawEmojis.length];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.fontSize = (.8 + Math.random() * 1.2) + 'rem';
+    pawsBg.appendChild(p);
+  }
+
+  // ── hearts rain ──
+  const heartEmojis = ['🤍','🩷','💕','🌸'];
+  for (let i = 0; i < 10; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart';
+    h.textContent = heartEmojis[i % heartEmojis.length];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.animationDuration = (6 + Math.random() * 8) + 's';
+    h.style.animationDelay = (Math.random() * 8) + 's';
+    document.body.appendChild(h);
+  }
+
+  // ── confetti burst ──
+  const colors = ['#f7c5d0','#e8849a','#fde8ee','#c97a93','#fff0f5'];
+  const wrap = document.getElementById('confetti');
+  const cx = window.innerWidth / 2, cy = window.innerHeight / 3;
+  for (let i = 0; i < 60; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    const angle = Math.random() * 360;
+    const dist = 80 + Math.random() * 200;
+    const tx = `translate(${Math.cos(angle*Math.PI/180)*dist}px, ${Math.sin(angle*Math.PI/180)*dist}px)`;
+    d.style.cssText = `
+      left:${cx}px; top:${cy}px;
+      background:${colors[i%colors.length]};
+      --tx:${tx};
+      animation-delay:${Math.random()*.4}s;
+      animation-duration:${.8+Math.random()*.5}s;
+      width:${6+Math.random()*8}px;
+      height:${6+Math.random()*8}px;
+    `;
+    wrap.appendChild(d);
+  }
+  setTimeout(() => wrap.remove(), 2000);
+</script>
+</body>
+</html>
